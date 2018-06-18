@@ -9,10 +9,10 @@
 <div id="wrapper">
 	<div id="characters">
 		<p>Characters To Pick: </p>
-		<button class="pickCharacter" id="one" data-character='1'>1</button>
+<!-- 		<button class="pickCharacter" id="one" data-character='1'>1</button>
 		<button class="pickCharacter" id="two" data-character='2'>2</button>
 		<button class="pickCharacter" id="three" data-character='3'>3</button>
-		<button class="pickCharacter" id="four" data-character='4'>4</button>
+		<button class="pickCharacter" id="four" data-character='4'>4</button> -->
 	</div>
 
 	<div id="yourCharacter">
@@ -23,7 +23,7 @@
 		<p>Enemies Available To Attack</p>
 	</div>
 
-	<div id="attack">
+	<div class="attack">
 		<button id="attack">attack</button>
 	</div>
 	
@@ -34,47 +34,70 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
+	var button;
+	var charStats = [
+	{'name': 'char1', 'healthpoints': '100', 'attackpower': 10},
+	{'name': 'char2', 'healthpoints': '110', 'attackpower': 15},
+	{'name': 'char3', 'healthpoints': '120', 'attackpower': 20},
+	{'name': 'char4', 'healthpoints': '130', 'attackpower': 25}
+	]
+
+	for(var i = 0; i < charStats.length; i++){
+		button = $('<button>');
+		button.attr('class','pickCharacter');
+		button.attr('name',charStats[i].name);
+		button.attr('id', 'char'+[i+1]);
+		button.text(charStats[i].name);
+		button.attr('healthpoints',charStats[i].healthpoints);
+		$('#characters').append(button);
+	}
 
 	$(document).on('click','.pickCharacter',function(){
-		var yourCharacter = $(this).data('character');
-		var button = $('<button>');
+		var yourCharacter = $(this).attr('name');
+		// var button = $('<button>');
+		debugger;
 
-		if(yourCharacter == '1'){
+		if(yourCharacter == 'char1'){
 			
-			$('#yourCharacter').append($('#one').attr('class','yourCharacter'));
-			$('#enemiesToAttack').append($('#two').attr('class','enemies'));
-			$('#enemiesToAttack').append($('#three').attr('class','enemies'));
-			$('#enemiesToAttack').append($('#four').attr('class','enemies'));
+			$('#yourCharacter').append($('#char1').attr('class','yourCharacter'));
+			$('#enemiesToAttack').append($('#char2').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#char3').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#char4').attr('class','enemies'));
 		
-		} else if (yourCharacter == '2'){
+		} else if (yourCharacter == 'char2'){
 			
-			$('#yourCharacter').append($('#two').attr('class','yourCharacter'));
-			$('#enemiesToAttack').append($('#one').attr('class','enemies'));
-			$('#enemiesToAttack').append($('#three').attr('class','enemies'));
-			$('#enemiesToAttack').append($('#four').attr('class','enemies'));
+			$('#yourCharacter').append($('#char2').attr('class','yourCharacter'));
+			$('#enemiesToAttack').append($('#char1').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#char3').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#char4').attr('class','enemies'));
 		
-		} else if (yourCharacter == '3'){
+		} else if (yourCharacter == 'char3'){
 			
-			$('#yourCharacter').append($('#three').attr('class','yourCharacter'));
-			$('#enemiesToAttack').append($('#one').attr('class','enemies'));
-			$('#enemiesToAttack').append($('#two').attr('class','enemies'));
-			$('#enemiesToAttack').append($('#four').attr('class','enemies'));
+			$('#yourCharacter').append($('#char3').attr('class','yourCharacter'));
+			$('#enemiesToAttack').append($('#char1').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#char2').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#char4').attr('class','enemies'));
 		
-		} else if (yourCharacter == '4'){
+		} else if (yourCharacter == 'char4'){
 			
-			$('#yourCharacter').append($('#four').attr('class','yourCharacter'));
-			$('#enemiesToAttack').append($('#one').attr('class','enemies'));
-			$('#enemiesToAttack').append($('#two').attr('class','enemies'));
-			$('#enemiesToAttack').append($('#three').attr('class','enemies'));
+			$('#yourCharacter').append($('#char4').attr('class','yourCharacter'));
+			$('#enemiesToAttack').append($('#char1').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#char2').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#char3').attr('class','enemies'));
+		
 		} 
 		
 		$('.pickCharacter').hide();
+
 	});
 
 	$(document).on('click','.enemies',function(){		
 		var thisButton = $(this).attr('class','defender')
 		$('#defender').append(thisButton);
+
 	});
+
+	
 
 </script>
 </body>
