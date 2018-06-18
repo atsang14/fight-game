@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+</style>
+<body>
+<div id="wrapper">
+	<div id="characters">
+		<p>Characters To Pick: </p>
+		<button class="pickCharacter" id="one" data-character='1'>1</button>
+		<button class="pickCharacter" id="two" data-character='2'>2</button>
+		<button class="pickCharacter" id="three" data-character='3'>3</button>
+		<button class="pickCharacter" id="four" data-character='4'>4</button>
+	</div>
+
+	<div id="yourCharacter">
+		<p>Your Character: </p>
+	</div>
+
+	<div id="enemiesToAttack">
+		<p>Enemies Available To Attack</p>
+	</div>
+
+	<div id="attack">
+		<button id="attack">attack</button>
+	</div>
+	
+	<div id="defender">
+		<p>Defender: </p>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(document).on('click','.pickCharacter',function(){
+		var yourCharacter = $(this).data('character');
+		var button = $('<button>');
+
+		if(yourCharacter == '1'){
+			
+			$('#yourCharacter').append($('#one').attr('class','yourCharacter'));
+			$('#enemiesToAttack').append($('#two').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#three').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#four').attr('class','enemies'));
+		
+		} else if (yourCharacter == '2'){
+			
+			$('#yourCharacter').append($('#two').attr('class','yourCharacter'));
+			$('#enemiesToAttack').append($('#one').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#three').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#four').attr('class','enemies'));
+		
+		} else if (yourCharacter == '3'){
+			
+			$('#yourCharacter').append($('#three').attr('class','yourCharacter'));
+			$('#enemiesToAttack').append($('#one').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#two').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#four').attr('class','enemies'));
+		
+		} else if (yourCharacter == '4'){
+			
+			$('#yourCharacter').append($('#four').attr('class','yourCharacter'));
+			$('#enemiesToAttack').append($('#one').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#two').attr('class','enemies'));
+			$('#enemiesToAttack').append($('#three').attr('class','enemies'));
+		} 
+		
+		$('.pickCharacter').hide();
+	});
+
+	$(document).on('click','.enemies',function(){		
+		var thisButton = $(this).attr('class','defender')
+		$('#defender').append(thisButton);
+	});
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
