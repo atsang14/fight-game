@@ -35,11 +35,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	var button;
+	var attackIncrease = 10;
+
+	var yourHp
+	var yourAtt;
+	var defenderHp;
+	var defenderAtt;
+
 	var charStats = [
-	{'name': 'char1', 'healthpoints': '100', 'attackpower': 10},
-	{'name': 'char2', 'healthpoints': '110', 'attackpower': 15},
-	{'name': 'char3', 'healthpoints': '120', 'attackpower': 20},
-	{'name': 'char4', 'healthpoints': '130', 'attackpower': 25}
+	{'name': 'char1', 'healthpoints': '100', 'attackpower': 5},
+	{'name': 'char2', 'healthpoints': '110', 'attackpower': 10},
+	{'name': 'char3', 'healthpoints': '120', 'attackpower': 15},
+	{'name': 'char4', 'healthpoints': '130', 'attackpower': 20}
 	]
 
 	for(var i = 0; i < charStats.length; i++){
@@ -47,6 +54,8 @@
 		button.attr('class','pickCharacter');
 		button.attr('name',charStats[i].name);
 		button.attr('id', 'char'+[i+1]);
+		// button.attr('hp',charStats[i].healthpoints);
+		button.attr('attack', charStats[i].attackpower);
 		button.text(charStats[i].name);
 		button.attr('healthpoints',charStats[i].healthpoints);
 		$('#characters').append(button);
@@ -55,7 +64,6 @@
 	$(document).on('click','.pickCharacter',function(){
 		var yourCharacter = $(this).attr('name');
 		// var button = $('<button>');
-		debugger;
 
 		if(yourCharacter == 'char1'){
 			
@@ -86,22 +94,67 @@
 			$('#enemiesToAttack').append($('#char3').attr('class','enemies'));
 		
 		} 
-		
 		$('.pickCharacter').hide();
 
 	});
 
-	$(document).on('click','.enemies',function(){		
+	$(document).on('click','.enemies',function(){
+		
 		var thisButton = $(this).attr('class','defender')
 		$('#defender').append(thisButton);
 
 	});
 
-	
+	$(document).on('click','#attack',function(){
+		// your character vs defender
+		// get hp att of each character
+	 	// yourHp;
+	 	// yourAtt;
+	 	// defenderHp;
+	 	// defenderAtt;
+	 	yourHp 		= parseInt($('.yourCharacter').attr('healthpoints'));
+	 	yourAtt 	= parseInt($('.yourCharacter').attr('attack'));
+	 	
+	 	defenderHp	= parseInt($('.defender').attr('healthpoints'));
+	 	defenderAtt	= parseInt($('.defender').attr('attack'));
 
+	 	yourHp		= yourHp - defenderAtt;
+	 	yourAtt		= yourAtt + attackIncrease;
+	 	defenderHp 	= defenderHp - yourAtt;
+
+	 	while((yourHp>0)&&(defenderHp>0)){
+	 	// debugger;
+
+	 	$('.yourCharacter').attr('healthpoints', yourHp);
+	 	$('.yourCharacter').attr('attack', yourAtt);
+
+	 	$('.defender').attr('healthpoints', defenderHp);
+	 	$('.defender').attr('attack', defenderAtt);
+
+	 	alert('your attack is now '+yourAtt);
+	 	alert('your hp is ' +yourHp);
+	 	alert('defender hp is '+defenderHp);
+	 	break;
+	 	}
+	 	// debugger;
+
+
+	})
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
