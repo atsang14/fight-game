@@ -27,17 +27,20 @@
 		<button id="attack">attack</button>
 	</div>
 	
-	<div id="defender">
-		<p>Defender: </p>
-	</div>
+	<p>Defender: </p>
+	<div id="defender"></div>
+		<!-- <p>Defender: </p> -->
+	<div id="restart"></div>
+
+	<div id="textBox"><p id="text"></p></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	var button;
 	var attackIncrease = 10;
-
-	var yourHp
+	var charOriginalHp;
+	var yourHp;
 	var yourAtt;
 	var defenderHp;
 	var defenderAtt;
@@ -62,8 +65,13 @@
 	}
 
 	$(document).on('click','.pickCharacter',function(){
+		charOriginalHp = parseInt($(this).attr('healthpoints'));
 		var yourCharacter = $(this).attr('name');
+		var yourHp = $(this).attr('healthpoints'); 
+		var p = $('<p>').attr('yourHp', yourHp)
 		// var button = $('<button>');
+
+		$('#yourCharacter').append(p.text('Hp: ' + yourHp));
 
 		if(yourCharacter == 'char1'){
 			
@@ -94,13 +102,16 @@
 			$('#enemiesToAttack').append($('#char3').attr('class','enemies'));
 		
 		} 
-		$('.pickCharacter').hide();
+		$('.pickCharacter').remove();
 
 	});
 
 	$(document).on('click','.enemies',function(){
-		
-		var thisButton = $(this).attr('class','defender')
+		var enemyhp 	= $(this).attr('healthpoints');
+		var thisButton 	= $(this).attr('class','defender')
+		var p 			= $('<p>').attr('enemyHp',enemyhp);
+
+		$('#defender').append($('<p>').text('Hp: ' + enemyhp ));
 		$('#defender').append(thisButton);
 
 	});
@@ -112,34 +123,108 @@
 	 	// yourAtt;
 	 	// defenderHp;
 	 	// defenderAtt;
-	 	yourHp 		= parseInt($('.yourCharacter').attr('healthpoints'));
-	 	yourAtt 	= parseInt($('.yourCharacter').attr('attack'));
-	 	
-	 	defenderHp	= parseInt($('.defender').attr('healthpoints'));
-	 	defenderAtt	= parseInt($('.defender').attr('attack'));
 
-	 	yourHp		= yourHp - defenderAtt;
-	 	yourAtt		= yourAtt + attackIncrease;
-	 	defenderHp 	= defenderHp - yourAtt;
+	 	// while($('#defender').text() == ''){
+	 	// 	$('#text').text('no enemy here');
+	 	// 	break;
+	 	// }
 
-	 	while((yourHp>0)&&(defenderHp>0)){
-	 	// debugger;
-
-	 	$('.yourCharacter').attr('healthpoints', yourHp);
-	 	$('.yourCharacter').attr('attack', yourAtt);
-
-	 	$('.defender').attr('healthpoints', defenderHp);
-	 	$('.defender').attr('attack', defenderAtt);
-
-	 	alert('your attack is now '+yourAtt);
-	 	alert('your hp is ' +yourHp);
-	 	alert('defender hp is '+defenderHp);
-	 	break;
+	 	if($('#defender').text() == ''){
+	 		$('#text').text('no enemy here');	
+	 		return
 	 	}
+
+	 	while($('#defender').text() != ''){
+	 		
+		 	yourHp 		= parseInt($('.yourCharacter').attr('healthpoints'));
+		 	yourAtt 	= parseInt($('.yourCharacter').attr('attack'));
+		 	
+		 	defenderHp	= parseInt($('.defender').attr('healthpoints'));
+		 	defenderAtt	= parseInt($('.defender').attr('attack'));
+
+		 	yourHp		= yourHp - defenderAtt;
+		 	defenderHp 	= defenderHp - yourAtt;
+
+
+
+		 	if(defenderHp < 0){
+				$('.defender').remove()
+				$('.yourCharacter').attr('healthpoints',charOriginalHp);
+			}
+
+			yourAtt		= yourAtt + attackIncrease;
+		 	$('.yourCharacter').attr('healthpoints', yourHp);
+	 		$('.yourCharacter').attr('attack', yourAtt);
+
+		 	break;
+	 	}
+
+
+
+	 	// alert('your attack is now '+yourAtt);
+	 	// alert('your hp is ' +yourHp);
+	 	// $('.yourCharacter').attr('healthpoints', yourHp);
+	 	// $('.yourCharacter').attr('attack', yourAtt);
+	 	
+	 	// while((yourHp>0)&&(defenderHp>0)){
 	 	// debugger;
+	 	// enemy hp is reduced below zero here.
+	 	// when this happens, we need to hide this button from // document with hide().
+			
+		// 	$('.defender').attr('healthpoints', defenderHp);
+		//  	$('.defender').attr('attack', defenderAtt);
+		// 	alert('defender hp is '+defenderHp);
+		// 	break;
+
+		// // }
+		// $('#text').text('your attack is now '+yourAtt+ '. your hp is ' + yourHp+ ' .' +' Defender hp is '+defenderHp);
+		
+		if(defenderHp < 0){
+			$('.yourCharacter').attr('healthpoints',charOriginalHp);
+			$('.defender').remove()
+		} 
+		// else if((yourHp < 0) || ($('.enemies').text() == '')){
+		// 	alert('you have died');
+		// 	var resetButton = $('<button>');
+		// 	resetButton.attr('class', 'resetButton');
+		// 	$('#restart').append(resetButton);
+		// }
 
 
+		// else if there're no more enemies available to attack
 	})
+
+	// only show restart button if there is no more enemies left or your have died.
+	// show depending if conditions are met
+	// which is better for website? remove and add new buttons or 
+	// just move a few things around?
+	// here i just removed it, but what if i just re-added some values and 
+	// changed the attr of the buttons.
+	// like reseting a chess board.
+	$(document).on('click','.resetButton',function(){
+		
+		$('.pickCharacter').remove();
+		$('.yourCharacter').remove();
+		$('.defender').remove();
+		$('.enemies').remove();
+
+		for(var i = 0; i < charStats.length; i++){
+			
+			button = $('<button>');
+			button.attr('class','pickCharacter');
+			button.attr('name',charStats[i].name);
+			button.attr('id', 'char'+[i+1]);
+			// button.attr('hp',charStats[i].healthpoints);
+			button.attr('attack', charStats[i].attackpower);
+			button.text(charStats[i].name);
+			button.attr('healthpoints',charStats[i].healthpoints);
+			$('#characters').append(button);
+		
+		}
+
+		$('#restart').remove();
+	});
+
 </script>
 </body>
 </html>
