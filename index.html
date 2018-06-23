@@ -134,6 +134,7 @@
 	var yourCharacter;
 	var defenderOriginalHp = 0;
 	var yourCharacterOriginalHp = 0;
+	var charOriginalPower = 0;
 	var losers = [];
 
 	$('.restart').hide();
@@ -158,6 +159,7 @@
 		yourCharacter = $(this).attr('id');
 		yourHp = $(this).attr('healthpoints');
 		yourCharacterOriginalHp = $(this).attr('healthpoints');
+		charOriginalPower = $(this).attr('powerLevel');
 
 		if(yourCharacter == 'goku'){
 			
@@ -223,6 +225,7 @@
 	 	}
 
 	 	if((losers.length == 2) || (yourHp <= 0)){
+	 		$('#'+yourCharacter+'Hp').text(yourCharacterOriginalHp);
 	 		$('.restart').show();
 	 	}
 
@@ -236,11 +239,14 @@
 	// here i just removed it, but what if i just re-added some values and 
 	// changed the attr of the buttons.
 	// like reseting a chess board.
-	$(document).on('click','.resetButton',function(){
+	$(document).on('click','.restart',function(){
+		
+		$('#characters').append($('#'+yourCharacter));
+		$('#'+yourCharacter+'Power').text(charOriginalPower);
 		for(var i = 0; i < losers.length; i++){
-	 		$(losers[i]);
+			$('#characters').append($('#'+losers[i]).show());
 		}
-
+		losers = [];
 		$('.restart').hide();
 	});
 
