@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title></title>
+	<style type="text/css">
+		/*megaman*/
+	.bg-megaman {
+	    background: url('assets/images/megaman.png') -10px -10px;
+	    width: 143px;
+	    height: 198px;
+	    background-position: -12px -12px;
+	}
+
+	.bg-megaman:hover {
+		width: 138px;
+		height: 198px; 
+		background-position: -172px -10px;
+		animation: playmegaman 0.3s steps(3) infinite;
+	}
+
+	@keyframes playmegaman{
+		100% {background-position: -600px -12px; }
+	}
+
+	.bg-zero {
+	    background: url(assets/images/zero.png) -10px -10px;
+	    width: 121px;
+	    height: 132px;
+	    background-position: -220px -42px;
+	    animation: idleZero 1.0s steps(2) infinite;
+	}
+
+	.bg-zero:hover {
+		width: 121px;
+	    height: 132px;
+	    background-position: -253px -215px;
+	    animation: playzero 0.3s steps(3) infinite;
+	}
+
+	@keyframes idleZero{
+		100% {background-position: -465px -42px }
+	}
+
+	@keyframes playzero{
+		100% {background-position: -620px -198px; }
+	}
+
+		/*goku*/
+
+	.gokucharge1 {
+		background: url('assets/images/goku.png') -10px -10px;
+		width: 96px;
+		height: 100px;
+		background-position: -5px -949px;
+		animation: gokuidle 0.5s steps(2) infinite;
+	 }
+
+	 .gokucharge1:hover{
+		width: 96px;
+		height: 100px;
+		background-position: -5px -1150px;
+		animation: nextlevel 0.5s steps(2) infinite;
+	}
+
+	@keyframes gokuidle{
+		100% {background-position: -5px -1146px; }
+	}
+
+	@keyframes nextlevel{
+		100% {background-position: -5px -1560px; }
+	}
+
+	</style>
+</head>
+<body>
+<div class="bg-megaman"></div>
+<div class="bg-zero"></div>
+<div class="gokucharge1"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
