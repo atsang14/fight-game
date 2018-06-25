@@ -1,0 +1,210 @@
+	/* button*/
+	@charset "UTF-8";
+	@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
+	@media screen and (max-width: 875px) {
+	.button-container {
+	    margin: 10px 10px !important;
+	}
+
+	  h2 {
+	    font-size: 15vw !important;
+	  }
+	}
+
+	html, body {
+	  font-family: "Lato", sans-serif;
+	  font-weight: 300;
+	}
+
+	h2 {
+	  font-size: 100px;
+	  position: relative;
+	  color: #5b85c0;
+	  background-image: -webkit-linear-gradient(90deg, #a558d4 0%, #34619e 80%);
+	  -webkit-background-clip: text;
+	  -webkit-text-fill-color: transparent;
+	  -webkit-animation: hue 60s infinite linear;
+	}
+
+	.button-row-container {
+	  width: 250px;
+	  height: 50px;
+	  position: relative;
+	  display: flex;
+	  flex-direction: row;
+	  justify-content: space-between;
+	  align-items: center;
+	  margin: 0 auto;
+	}
+
+	section.page-container {
+	  max-width: 800px;
+	  text-align:center;
+	}
+
+
+	.button-container {
+	  display: inline-block;
+	  margin: 10px 10px;
+	  cursor: pointer;
+	  font-weight: 400;
+	  letter-spacing: 2px;
+	  height: 45px;
+	  width: 200px;
+	  -webkit-perspective: 1000;
+	  -ms-perspective: 1000;
+	  perspective: 1000;
+	}
+	.button-container .flipper {
+	  transition: all 0.5s ease-in-out;
+	  -webkit-transform-style: preserve-3d;
+	  -ms-transform-style: preserve-3d;
+	  transform-style: preserve-3d;
+	  position: relative;
+	}
+	.button-container .button {
+	  height: 45px;
+	  width: 200px;
+	  border-radius: 3px;
+	  backface-visibility: hidden;
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  -webkit-box-shadow: 1px 2px 4px -1px rgba(60, 60, 60, 0.64);
+	  box-shadow: 1px 2px 4px -1px rgba(60, 60, 60, 0.64);
+	}
+	.button-container .button i.fa {
+	  color: red;
+	  font-size: 20px;
+	  /*margin: auto;*/
+	  text-shadow: 0.5px 1px 2px #3c3c3c;
+	}
+	.button-container .button.front {
+	  z-index: 10;
+	}
+	.button-container .button.back {
+	  color: red;
+	  font-size: 15px;
+	  text-transform: uppercase;
+	}
+
+	.button-flip3d-vertical1 .flipper-flip3d-vertical1 {
+	  transform-origin: 100% 22.5px;
+	}
+	.button-flip3d-vertical1 .front {
+	  transform: translateZ(22.5px);
+	  background-image: linear-gradient(90deg, #000, #3c3c3c);
+	}
+	.button-flip3d-vertical1 .back {
+	  -webkit-transform: rotateX(90deg) translateZ(22.5px);
+	  -ms-transform: rotateX(90deg) translateZ(22.5px);
+	  transform: rotateX(90deg) translateZ(22.5px);
+	  background-image: linear-gradient(10deg, white, black);
+	}
+	.button-flip3d-vertical1:hover .flipper-flip3d-vertical1 {
+	  transform: rotateX(-80deg);
+	}	
+		/*megaman*/
+
+	.bg-megaman {
+	    background: url('images/megaman.png') -10px -10px;
+	    width: 143px;
+	    height: 198px;
+	    background-position: -12px -12px;
+	}
+
+	.bg-megaman:hover {
+		width: 138px;
+		height: 198px; 
+		background-position: -172px -10px;
+		animation: playmegaman 0.3s steps(3) infinite;
+	}
+
+	@keyframes playmegaman{
+		100% {background-position: -600px -12px; }
+	}
+
+		/*zero*/
+
+	.bg-zero {
+	    background: url(images/zero.png) -10px -10px;
+	    width: 121px;
+	    height: 132px;
+	    background-position: -220px -42px;
+	    animation: idleZero 1.0s steps(2) infinite;
+	}
+
+	.bg-zero:hover {
+		width: 121px;
+	    height: 132px;
+	    background-position: -253px -215px;
+	    animation: playzero 0.3s steps(3) infinite;
+	}
+
+	@keyframes idleZero{
+		100% {background-position: -465px -42px }
+	}
+
+	@keyframes playzero{
+		100% {background-position: -620px -198px; }
+	}
+
+		/*goku*/
+
+	.gokucharge1 {
+		background: url('images/goku.png') -10px -10px;
+		width: 96px;
+		height: 100px;
+		background-position: -5px -949px;
+		animation: gokuidle 0.5s steps(2) infinite;
+	 }
+
+	 .gokucharge1:hover{
+		width: 96px;
+		height: 100px;
+		background-position: -5px -1150px;
+		animation: nextlevel 0.5s steps(2) infinite;
+	}
+
+	@keyframes gokuidle{
+		100% {background-position: -5px -1146px; }
+	}
+
+	@keyframes nextlevel{
+		100% {background-position: -5px -1560px; }
+	}
+
+		/*divider*/
+	.divider-wrapper {
+    width: 550px;
+    height: 500px;
+    margin: 30px auto;
+    position: relative;
+    margin-left: 250px;
+}
+
+  .code-wrapper {
+    border: 5px solid #7FFF00;
+    border-radius: 10px;
+    display: block;
+    overflow: hidden;
+    width: 900px;
+    height: 100%;
+    background-size: cover;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+

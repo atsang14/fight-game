@@ -2,79 +2,9 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-	<style type="text/css">
-
-		/*megaman*/
-
-	.bg-megaman {
-	    background: url('assets/images/megaman.png') -10px -10px;
-	    width: 143px;
-	    height: 198px;
-	    background-position: -12px -12px;
-	}
-
-	.bg-megaman:hover {
-		width: 138px;
-		height: 198px; 
-		background-position: -172px -10px;
-		animation: playmegaman 0.3s steps(3) infinite;
-	}
-
-	@keyframes playmegaman{
-		100% {background-position: -600px -12px; }
-	}
-
-		/*zero*/
-
-	.bg-zero {
-	    background: url(assets/images/zero.png) -10px -10px;
-	    width: 121px;
-	    height: 132px;
-	    background-position: -220px -42px;
-	    animation: idleZero 1.0s steps(2) infinite;
-	}
-
-	.bg-zero:hover {
-		width: 121px;
-	    height: 132px;
-	    background-position: -253px -215px;
-	    animation: playzero 0.3s steps(3) infinite;
-	}
-
-	@keyframes idleZero{
-		100% {background-position: -465px -42px }
-	}
-
-	@keyframes playzero{
-		100% {background-position: -620px -198px; }
-	}
-
-		/*goku*/
-
-	.gokucharge1 {
-		background: url('assets/images/goku.png') -10px -10px;
-		width: 96px;
-		height: 100px;
-		background-position: -5px -949px;
-		animation: gokuidle 0.5s steps(2) infinite;
-	 }
-
-	 .gokucharge1:hover{
-		width: 96px;
-		height: 100px;
-		background-position: -5px -1150px;
-		animation: nextlevel 0.5s steps(2) infinite;
-	}
-
-	@keyframes gokuidle{
-		100% {background-position: -5px -1146px; }
-	}
-
-	@keyframes nextlevel{
-		100% {background-position: -5px -1560px; }
-	}
-	</style>
 </head>
 <style type="text/css">
 </style>
@@ -109,150 +39,45 @@
 	<div id="enemiesToAttack"></div>
 
 	<div class="attack">
-		<button id="attack">attack</button>
+		<section class="page-container" id="flip-3d">
+		  <section class="page-container" id="flip-3d">
+		    <section class="section-container">
+		      <!-- 3-D Flip Downward-->
+		      <div class="button-container button-flip3d-vertical1" id="attack">
+		        <div class="flipper flipper-flip3d-vertical1">
+		          <div class="button front">
+		            <i class="fa fa-codepen"></i>
+		          </div>
+		          <div class="button button-3d back">
+					Attack
+		          </div>
+		        </div>
+		      </div>
+		    </section>
+		  </section>
+		</section>
 	</div>
 	
 	<p>Defender: </p>
 	<div id="defender"></div>
-		<!-- <p>Defender: </p> -->
+		
 	<button class="restart">restart</button>
 
 	<div id="textBox"><p id="text">No Enemy Here</p></div>
 </div>
 
+<div class="wrapper1" id="wrapper1">
+    <div class="divider-wrapper">
+      <div class="code-wrapper" id="code-wrapper">
+        <div class="design-wrapper">
+        </div>
+   	   </div>
+   	</div>
+</div>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-	var attackIncrease = 10;
-	var charOriginalHp;
-	var yourHp;
-	var yourAtt;
-	var defenderHp;
-	var defenderAtt;
-	var defenderCharacter;
-	var yourCharacter;
-	var defenderOriginalHp = 0;
-	var yourCharacterOriginalHp = 0;
-	var charOriginalPower = 0;
-	var losers = [];
-
-	$('#text').hide();
-	$('.restart').hide();
-
-	var gokuHp = parseInt($('#goku').attr('healthpoints'));
-	var gokuPowerLvl = parseInt($('#goku').attr('powerLevel'));
-	$('#gokuHp').text(gokuHp);
-	$('#gokuPower').text(gokuPowerLvl);
-
-	var zeroHp = parseInt($('#zero').attr('healthpoints'));
-	var zeroPowerLvl = parseInt($('#zero').attr('powerLevel'));
-	$('#zeroHp').text(zeroHp);
-	$('#zeroPower').text(zeroPowerLvl);
-
-	var megamanHp = parseInt($('#megaman').attr('healthpoints'));
-	var megamanPowerLvl = parseInt($('#megaman').attr('powerLevel'));
-	$('#megamanHp').text(megamanHp);
-	$('#megamanPower').text(megamanPowerLvl);
-
-
-	$(document).on('click','.pickCharacter',function(){
-		yourCharacter = $(this).attr('id');
-		yourHp = $(this).attr('healthpoints');
-		yourCharacterOriginalHp = $(this).attr('healthpoints');
-		charOriginalPower = $(this).attr('powerLevel');
-
-		if(yourCharacter == 'goku'){
-			
-			$('#yourCharacter').append($('#goku').attr('class','yourCharacter'));
-			$('#enemiesToAttack').append($('#zero').attr('class','enemies'));
-			$('#enemiesToAttack').append($('#megaman').attr('class','enemies'));
-		
-		} else if (yourCharacter == 'zero'){
-			
-			$('#yourCharacter').append($('#zero').attr('class','yourCharacter'));
-			$('#enemiesToAttack').append($('#goku').attr('class','enemies'));
-			$('#enemiesToAttack').append($('#megaman').attr('class','enemies'));
-		
-		} else if (yourCharacter == 'megaman'){
-			
-			$('#yourCharacter').append($('#megaman').attr('class','yourCharacter'));
-			$('#enemiesToAttack').append($('#goku').attr('class','enemies'));
-			$('#enemiesToAttack').append($('#zero').attr('class','enemies'));
-		
-		} 
-
-	});
-
-	$(document).on('click','.enemies',function(){
-		$('#text').hide();
-		var thisButton 		= $(this).attr('class','defender')
-		defenderCharacter	= $(this).attr('id');
-		defenderOriginalHp = $(this).attr('healthpoints');
-		$('#defender').append(thisButton);
-	});
-
-	$(document).on('click','#attack',function(){
-	 	
-	 	while($('#defender').text() == ''){
-	 		$('#text').show();
-	 		break;
-	 	}
-
-	 	if($('#defender').text() == ''){
-	 		$('#text').show();	
-	 		return;
-	 	}
-
-	 	yourHp 				= parseInt($('#'+yourCharacter+'Hp').text());
-	 	yourPowerLevel 		= parseInt($('#'+yourCharacter+'Power').text());
-
-	 	defenderHp 			= parseInt($('#'+defenderCharacter+'Hp').text());
-	 	defenderPowerLevel 	= parseInt($('#'+defenderCharacter+'Power').text());
-
-	 	yourHp 				= yourHp - defenderPowerLevel;
-	 	$('#'+yourCharacter+'Hp').text(yourHp);
-
-	 	defenderHp			= defenderHp - yourPowerLevel;
-	 	$('#'+defenderCharacter+'Hp').text(defenderHp);
-
-	 	yourPowerLevel		= yourPowerLevel + attackIncrease;
-	 	$('#'+yourCharacter+'Power').text(yourPowerLevel);
-
-		if(defenderHp <= 0){
-	 		$('#'+yourCharacter+'Hp').text(yourCharacterOriginalHp);
-	 		$('#'+defenderCharacter+'Hp').text(defenderOriginalHp);
-	 		losers.push(defenderCharacter);
-	 		$('#characters').append($('#'+defenderCharacter).attr('class','pickCharacter'));
-	 		$('#'+defenderCharacter).hide();
-	 	}
-
-	 	if(($('#enemiesToAttack').text()=='') || (yourHp <= 0)){
-	 		$('#'+yourCharacter+'Hp').text(yourCharacterOriginalHp);
-	 		$('.restart').show();
-	 	}
-
-
-	})
-
-	// only show restart button if there is no more enemies left or your have died.
-	// show depending if conditions are met
-	// which is better for website? remove and add new buttons or 
-	// just move a few things around?
-	// here i just removed it, but what if i just re-added some values and 
-	// changed the attr of the buttons.
-	// like reseting a chess board.
-	$(document).on('click','.restart',function(){
-		
-		$('#characters').append($('#'+yourCharacter).attr('class','pickCharacter'));
-		$('#'+yourCharacter+'Power').text(charOriginalPower);
-		for(var i = 0; i < losers.length; i++){
-			$('#'+losers[i]).show();
-		}
-		losers = [];
-		$('#text').hide();
-		$('.restart').hide();
-	});
-
-</script>
+<script src="assets/javascript/game.js" type="text/javascript"></script>
 </body>
 </html>
 
