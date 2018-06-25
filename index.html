@@ -105,9 +105,8 @@
 		<p>Your Character: </p>
 	</div>
 
-	<div id="enemiesToAttack">
-		<p>Enemies Available To Attack</p>
-	</div>
+	<p>Enemies Available To Attack</p>
+	<div id="enemiesToAttack"></div>
 
 	<div class="attack">
 		<button id="attack">attack</button>
@@ -118,12 +117,11 @@
 		<!-- <p>Defender: </p> -->
 	<button class="restart">restart</button>
 
-	<div id="textBox"><p id="text"></p></div>
+	<div id="textBox"><p id="text">No Enemy Here</p></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-	var button;
 	var attackIncrease = 10;
 	var charOriginalHp;
 	var yourHp;
@@ -137,6 +135,7 @@
 	var charOriginalPower = 0;
 	var losers = [];
 
+	$('#text').hide();
 	$('.restart').hide();
 
 	var gokuHp = parseInt($('#goku').attr('healthpoints'));
@@ -184,6 +183,7 @@
 	});
 
 	$(document).on('click','.enemies',function(){
+		$('#text').hide();
 		var thisButton 		= $(this).attr('class','defender')
 		defenderCharacter	= $(this).attr('id');
 		defenderOriginalHp = $(this).attr('healthpoints');
@@ -193,14 +193,14 @@
 	$(document).on('click','#attack',function(){
 	 	
 	 	while($('#defender').text() == ''){
-	 		$('#text').text('no enemy here');
+	 		$('#text').show();
 	 		break;
 	 	}
 
-	 	// if($('#defender').text() == ''){
-	 	// 	$('#text').text('no enemy here');	
-	 	// 	return
-	 	// }
+	 	if($('#defender').text() == ''){
+	 		$('#text').show();	
+	 		return;
+	 	}
 
 	 	yourHp 				= parseInt($('#'+yourCharacter+'Hp').text());
 	 	yourPowerLevel 		= parseInt($('#'+yourCharacter+'Power').text());
@@ -221,10 +221,11 @@
 	 		$('#'+yourCharacter+'Hp').text(yourCharacterOriginalHp);
 	 		$('#'+defenderCharacter+'Hp').text(defenderOriginalHp);
 	 		losers.push(defenderCharacter);
+	 		$('#characters').append($('#'+defenderCharacter).attr('class','pickCharacter'));
 	 		$('#'+defenderCharacter).hide();
 	 	}
 
-	 	if((losers.length == 2) || (yourHp <= 0)){
+	 	if(($('#enemiesToAttack').text()=='') || (yourHp <= 0)){
 	 		$('#'+yourCharacter+'Hp').text(yourCharacterOriginalHp);
 	 		$('.restart').show();
 	 	}
@@ -241,12 +242,13 @@
 	// like reseting a chess board.
 	$(document).on('click','.restart',function(){
 		
-		$('#characters').append($('#'+yourCharacter));
+		$('#characters').append($('#'+yourCharacter).attr('class','pickCharacter'));
 		$('#'+yourCharacter+'Power').text(charOriginalPower);
 		for(var i = 0; i < losers.length; i++){
-			$('#characters').append($('#'+losers[i]).show());
+			$('#'+losers[i]).show();
 		}
 		losers = [];
+		$('#text').hide();
 		$('.restart').hide();
 	});
 
