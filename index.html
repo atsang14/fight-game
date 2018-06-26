@@ -9,69 +9,74 @@
 <style type="text/css">
 </style>
 <body>
-<div id="wrapper">
-	<div id="characters">
-		<p>Characters To Pick: </p>
-		<button class="pickCharacter" id="goku" healthpoints="100" powerLevel="5">
-			<p>Hp: <span id="gokuHp"></span></p>
-			<p>Power Lvl: <span id="gokuPower"></span></p>
-			<div class="gokucharge1"></div>
-		</button>
-		
-		<button class="pickCharacter" id="zero" healthpoints="110" powerLevel="10">
-			<p>Hp: <span id="zeroHp"></span></p>
-			<p>Power Lvl: <span id="zeroPower"></span></p>
-			<div class="bg-zero"></div>
-		</button>
-		
-		<button class="pickCharacter" id="megaman" healthpoints="115" powerLevel="15">
-			<p>Hp: <span id="megamanHp"></span></p>
-			<p>Power Lvl: <span id="megamanPower"></span></p>
-			<div class="bg-megaman"></div>
-		</button>
-	</div>
 
-	<div id="yourCharacter">
-		<p>Your Character: </p>
-	</div>
-
-	<p>Enemies Available To Attack</p>
-	<div id="enemiesToAttack"></div>
-
-	<div class="attack">
-		<section class="page-container" id="flip-3d">
-		  <section class="page-container" id="flip-3d">
-		    <section class="section-container">
-		      <!-- 3-D Flip Downward-->
-		      <div class="button-container button-flip3d-vertical1" id="attack">
-		        <div class="flipper flipper-flip3d-vertical1">
-		          <div class="button front">
-		            <i class="fa fa-codepen"></i>
-		          </div>
-		          <div class="button button-3d back">
-					Attack
-		          </div>
-		        </div>
-		      </div>
-		    </section>
-		  </section>
-		</section>
-	</div>
-	
-	<p>Defender: </p>
-	<div id="defender"></div>
-		
-	<button class="restart">restart</button>
-
-	<div id="textBox"><p id="text">No Enemy Here</p></div>
-</div>
 
 <div class="wrapper1" id="wrapper1">
     <div class="divider-wrapper">
-      <div class="code-wrapper" id="code-wrapper">
-        <div class="design-wrapper">
-        </div>
-   	   </div>
+      	<div class="code-wrapper" id="code-wrapper">
+	        <div class="design-wrapper">
+	        	<div id="wrapper">
+					<div id="characters">
+						<p class="title">Characters To Pick: </p>
+						<button class="pickCharacter" id="goku" healthpoints="100" powerLevel="5">
+							<p>Hp: <span id="gokuHp"></span></p>
+							<p>Power Lvl: <span id="gokuPower"></span></p>
+							<div class="gokucharge1"></div>
+						</button>
+						
+						<button class="pickCharacter" id="zero" healthpoints="110" powerLevel="10">
+							<p>Hp: <span id="zeroHp"></span></p>
+							<p>Power Lvl: <span id="zeroPower"></span></p>
+							<div class="bg-zero"></div>
+						</button>
+						
+						<button class="pickCharacter" id="megaman" healthpoints="115" powerLevel="15">
+							<p>Hp: <span id="megamanHp"></span></p>
+							<p>Power Lvl: <span id="megamanPower"></span></p>
+							<div class="bg-megaman"></div>
+						</button>
+					</div>
+
+					<div id="yourCharacter">
+						<p class="title">Your Character: </p>
+					</div>
+
+					<div id="theEnemies">
+						<p class="title">Enemies Available To Attack</p>
+						<div id="enemiesToAttack"></div>
+					</div>
+					
+					<div id="theDefender">
+						<div id="textBox"><p id="text">No Enemy Here</p></div>
+						<p class="title">Defender</p>
+						<div id="defender"></div>
+					</div>
+
+					<div class="attack">
+						<section class="page-container" id="flip-3d">
+						  <section class="page-container" id="flip-3d">
+						    <section class="section-container">
+						      <!-- 3-D Flip Downward-->
+						      <div class="button-container button-flip3d-vertical1" id="attack">
+						        <div class="flipper flipper-flip3d-vertical1">
+						          <div class="button front">
+						            <i class="fa fa-codepen"></i>
+						          </div>
+						          <div class="button button-3d back">
+									Attack
+						          </div>
+						        </div>
+						      </div>
+						    </section>
+						  </section>
+						</section>
+					</div>
+						
+					<button class="restart">restart</button>
+
+				</div>
+	        </div>
+	   	</div>
    	</div>
 </div>
 

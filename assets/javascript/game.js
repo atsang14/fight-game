@@ -11,8 +11,12 @@
 	var charOriginalPower = 0;
 	var losers = [];
 
+	$('#yourCharacter').hide();
 	$('#text').hide();
 	$('.restart').hide();
+	$('#theDefender').hide();
+	$('.attack').hide();
+
 
 	var gokuHp = parseInt($('#goku').attr('healthpoints'));
 	var gokuPowerLvl = parseInt($('#goku').attr('powerLevel'));
@@ -31,6 +35,9 @@
 
 
 	$(document).on('click','.pickCharacter',function(){
+		$('#yourCharacter').show()
+		$('#theDefender').show();
+		$('.attack').show();
 		yourCharacter = $(this).attr('id');
 		yourHp = $(this).attr('healthpoints');
 		yourCharacterOriginalHp = $(this).attr('healthpoints');
@@ -56,6 +63,7 @@
 		
 		} 
 
+		$('#characters').hide();
 	});
 
 	$(document).on('click','.enemies',function(){
@@ -126,4 +134,8 @@
 		losers = [];
 		$('#text').hide();
 		$('.restart').hide();
+		$('#characters').show();
+		$('#yourCharacter').hide();
+		$('#theDefender').hide();
+		$('.attack').hide();
 	});

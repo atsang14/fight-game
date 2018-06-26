@@ -179,24 +179,113 @@
 
 		/*divider*/
 	.divider-wrapper {
-    width: 550px;
-    height: 500px;
-    margin: 30px auto;
-    position: relative;
-    margin-left: 250px;
+		width: 1500px
+		height: 700px;
+	    margin: 30px auto;
+	    position: relative;
+	    margin-left: 50px;
+	}
+
+  	.code-wrapper {
+	    /*border: 5px solid #7FFF00;*/
+	    border-radius: 10px;
+	    display: block;
+	    overflow: hidden;
+	    width: 1300px;
+	    height: 100%;
+	    background-size: cover;
+	}
+	
+	#characters {
+	    margin-left: 0px;
+	    height: 350px;
+	}
+
+	#yourCharacter{
+		height: 292px;
+	}
+	
+	#theEnemies {
+    /* clear: both; */
+	    float: right;
+	    position: relative;
+	    right: 75px;
+	    bottom: 355px;
+	}	
+	
+	#theDefender {
+	    clear: both;
+	    float: right;
+	    margin-right: 600px;
+	    position: relative;
+	    bottom: 367px;
+	    height: 600px;
+	}
+
+	#goku{
+		height: 71px;
+	}
+
+	#zero{
+		height: 71px;
+		width: 137px;
+	}
+
+	#megaman{
+		height: 71px;
+		width: 188px;
+	}
+
+	.attack{
+	    width: 250px;
+	    height: 70px;
+	    position: relative;
+	    left: 252px;
+	    bottom: 133px;
+	}
+
+	span, .title{
+		background: red;
+	    background: -webkit-linear-gradient(left, orange, green, cyan, blue, violet);
+	    background: -o-linear-gradient(right, orange,green, cyan, blue, violet);
+	    background: -moz-linear-gradient(right, orange,green, cyan, blue, violet);
+	    background: linear-gradient(to right, orange, green, cyan, blue, violet);
+	    -webkit-background-clip: text;
+	    -webkit-text-fill-color: transparent;
+	    font-size: 1vw;
+
+	}
+
+	.title{
+		font-size: 30px
+	}
+	/*mario background*/
+
+html, body {
+  height: 100%;
+  width: 100%;
 }
 
-  .code-wrapper {
-    border: 5px solid #7FFF00;
-    border-radius: 10px;
-    display: block;
-    overflow: hidden;
-    width: 900px;
-    height: 100%;
-    background-size: cover;
+body {
+  height: 100%;
+  background-image: url("http://portfolio.kageetai.net/mario/mario.gif"), url("http://portfolio.kageetai.net/mario/ground.png"), url("http://portfolio.kageetai.net/mario/bushes.png"), url("http://portfolio.kageetai.net/mario/back.png");
+  background-color: #F8E0B0;
+  background-repeat: no-repeat, repeat-x, repeat-x, repeat-x;
+  background-position: left 30% bottom 24px, left 0px bottom 0px, left 0px bottom 24px, left 0px bottom 0px;
+  animation: back 15s infinite linear;
+}
+
+@keyframes back {
+  0% {
+    background-position: left 30% bottom 24px, left 0px bottom 0px, left 0px bottom 24px, left 0px bottom 0px;
   }
-
-
+  50% {
+    background-position: left 50% bottom 24px, left -816px bottom 0px, left -508px bottom 24px, left -256px bottom 0px;
+  }
+  100% {
+    background-position: left 30% bottom 24px, left -1632px bottom 0px, left -1016px bottom 24px, left -512px bottom 0px;
+  }
+}
 
 
 
